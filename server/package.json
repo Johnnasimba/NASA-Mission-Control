@@ -20,6 +20,7 @@
   "homepage": "http://localhost:5000",
   "dependencies": {
     "cors": "^2.8.5",
+    "csv-parse": "^4.16.0",
     "express": "^4.17.1"
   }
 }
