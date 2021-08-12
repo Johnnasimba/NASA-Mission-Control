@@ -1,0 +1,24 @@
+{
+  "name": "nasa-mission-control",
+  "version": "1.0.0",
+  "description": "Explore habitable planets using an API from NASA and SpaceX",
+  "main": "cd src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon cd src/server.js",
+    "start": "node cd src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johnnasimba/NASA-Mission-Control.git"
+  },
+  "author": "John Nasimba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Johnnasimba/NASA-Mission-Control/issues"
+  },
+  "homepage": "http://localhost:5000",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
