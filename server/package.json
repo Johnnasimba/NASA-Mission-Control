@@ -1,5 +1,5 @@
 {
-  "name": "nasa-mission-control",
+  "name": "nasa-mission-control-api",
   "version": "1.0.0",
   "description": "Explore habitable planets using an API from NASA and SpaceX",
   "main": "cd src/server.js",
