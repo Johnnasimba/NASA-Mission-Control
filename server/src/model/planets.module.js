@@ -3,7 +3,6 @@ const path = require('path')
 const parse = require('csv-parse');
 const planets = require('./planets.mongo');
 
-const habitablePlanets = []
 const max_survivable_light = 1.11;
 const min_survivable_light = 0.36;
 const max_survivable_planet_radius = 1.6;
@@ -27,17 +26,16 @@ function loadPlanetsData() {
         }))
         .on('data', async (data) => {
             if(isHabitablePlanet(data)) {
-               await planets.createReadStream({
-                   keplerName = data.kepler_name,
-               });
+                savePlanet(data);
             }
         })
         .on('error', (err) => {
             console.log(err);
             reject(err)
         })
-        .on('end', () => {
-            console.log(`${habitablePlanets.length} habitable planets found!`);
+        .on('end', async () => {
+            const countPlanetsFound = (await getAllPlanets()).length;
+            console.log(`${countPlanetsFound} habitable planets found!`);
             resolve();
         });
     
@@ -48,6 +46,23 @@ function loadPlanetsData() {
 async function getAllPlanets() {
     return await planets.find({})
 }
+
+async function savePlanet(planet) {
+    try {
+        // Add a planet else update if exist
+        await planets.updateOne({
+            keplerName : planet.kepler_name,
+        }, {
+            keplerName : planet.kepler_name,
+        }, {
+            upsert: true,
+        });
+    }catch(error) {
+        console.error(`Could not save planet ${error}`)
+    }
+   
+}
+
   
 
     module.exports = {
