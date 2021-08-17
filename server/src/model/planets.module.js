@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path')
 const parse = require('csv-parse');
+const planets = require('./planets.mongo');
 
 const habitablePlanets = []
 const max_survivable_light = 1.11;
@@ -24,9 +25,11 @@ function loadPlanetsData() {
             comment: '#',
             columns: true
         }))
-        .on('data', (data) => {
+        .on('data', async (data) => {
             if(isHabitablePlanet(data)) {
-                habitablePlanets.push(data);
+               await planets.createReadStream({
+                   keplerName = data.kepler_name,
+               });
             }
         })
         .on('error', (err) => {
