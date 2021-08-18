@@ -17,6 +17,9 @@
   },
   "author": "John Nasimba",
   "license": "ISC",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "bugs": {
     "url": "https://github.com/Johnnasimba/NASA-Mission-Control/issues"
   },
