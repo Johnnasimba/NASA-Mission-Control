@@ -10,7 +10,7 @@ mongoose.connection.on('error', (error) => {
     console.error(error)
 })
 
-const mongoURL = process.env.MONGO_URL
+const mongoURL = process.env.MONGO_URL;
 
 async function mongoConnect() {
     await mongoose.connect(mongoURL,  {
@@ -18,10 +18,14 @@ async function mongoConnect() {
         useUnifiedTopology: true,
         useFindAndModify: false,
         useCreateIndex: true
-    })
+    });
 }
 
+async function mongoDisconnect() {
+    await mongoose.disconnect();
+}
 
 module.exports = {
     mongoConnect,
+    mongoDisconnect,
 }
