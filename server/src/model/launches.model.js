@@ -4,8 +4,6 @@ const launchesDatabase = require('./launches.mongo');
 const planets = require('./planets.mongo');
 
 const DEFAULT_FLIGHT_NUMBER = 100;
-const launches = new Map();
-
 
 
 const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
