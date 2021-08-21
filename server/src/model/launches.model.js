@@ -7,18 +7,6 @@ const DEFAULT_FLIGHT_NUMBER = 100;
 const launches = new Map();
 
 
-const launch = {
-    flightNumber: 100, //flight_number 
-    mission: 'Kepler Exploration', //name
-    rocket: 'Explorer IS1', //rocket.name 
-    launchDate: new Date('December 27, 2030'), //date_local
-    target: 'Kepler-442 b', //Not applicable
-    customers: ['ZTM', 'NASA'], //payload.customers for each payload
-    upcoming: true, //upcoming
-    success: true //success
-};
-
-saveLaunch(launch);
 
 const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
 
@@ -111,6 +99,7 @@ async function getLatestFlightNumber() {
 async function getAllLaunches(skip, limit) {
     return await launchesDatabase
         .find({}, {'_id': 0, '__v': 0})
+        .sort({flightNumber: 1})
         .skip(skip)
         .limit(limit);
 }
