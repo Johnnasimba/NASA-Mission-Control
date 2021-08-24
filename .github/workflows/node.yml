@@ -21,4 +21,4 @@ jobs:
       - run: npm install --prefix client
       - run: npm run build --prefix client
       - run: npm run test
-        uses: stefanoeb/jest-action@1.0.3
+      - uses: stefanoeb/jest-action@1.0.3
