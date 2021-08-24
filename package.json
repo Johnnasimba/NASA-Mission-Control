@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Johnnasimba/NASA-Mission-Control/issues"
   },
-  "homepage": "https://localhost:8000"
+  "homepage": "https://localhost:8000",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }
